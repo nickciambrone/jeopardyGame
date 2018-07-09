@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jeopardy Game!</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto+Mono');
+    </style>
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <div id="instructions">Instructions: <span id="instruction"></span></div>
+        </div>
+        <div class="container">
+            <div class="row" id="questions">
+                <div class="col-md-2" id="category-1"></div>
+                <div class="col-md-2" id="category-2"></div>
+                <div class="col-md-2" id="category-3"></div>
+                <div class="col-md-2" id="category-4"></div>
+                <div class="col-md-2" id="category-5"></div>
+                <div class="col-md-2" id="category-6"></div>
+            </div>
+        </div>
+        <div class="container main-area" id="dollars">
+            <div class="row" id="100">
+                <div class="col-md-2 question" id="category-1-100">$100</div>
+                <div class="col-md-2 question" id="category-2-100">$100</div>
+                <div class="col-md-2 question" id="category-3-100">$100</div>
+                <div class="col-md-2 question" id="category-4-100">$100</div>
+                <div class="col-md-2 question" id="category-5-100">$100</div>
+                <div class="col-md-2 question" id="category-6-100">$100</div>
+            </div>
+            <div class="row" id="200">
+                <div class="col-md-2 question" id="category-1-200">$200</div>
+                <div class="col-md-2 question" id="category-2-200">$200</div>
+                <div class="col-md-2 question" id="category-3-200">$200</div>
+                <div class="col-md-2 question" id="category-2-200">$200</div>
+                <div class="col-md-2 question" id="category-5-200">$200</div>
+                <div class="col-md-2 question" id="category-6-200">$200</div>
+            </div>
+            <div class="row" id="300">
+                <div class="col-md-2 question" id="category-1-300">$300</div>
+                <div class="col-md-2 question" id="category-2-300">$300</div>
+                <div class="col-md-2 question" id="category-3-300">$300</div>
+                <div class="col-md-2 question" id="category-4-300">$300</div>
+                <div class="col-md-2 question" id="category-5-300">$300</div>
+                <div class="col-md-2 question" id="category-6-300">$300</div>
+            </div>
+            <div class="row" id="400">
+                <div class="col-md-2 question" id="category-1-400">$400</div>
+                <div class="col-md-2 question" id="category-2-400">$400</div>
+                <div class="col-md-2 question" id="category-3-400">$400</div>
+                <div class="col-md-2 question" id="category-4-400">$400</div>
+                <div class="col-md-2 question" id="category-5-400">$400</div>
+                <div class="col-md-2 question" id="category-6-400">$400</div>
+            </div>
+            <div class="row" id="500">
+                <div class="col-md-2 question" id="category-1-500">$500</div>
+                <div class="col-md-2 question" id="category-2-500">$500</div>
+                <div class="col-md-2 question" id="category-3-500">$500</div>
+                <div class="col-md-2 question" id="category-4-500">$500</div>
+                <div class="col-md-2 question" id="category-5-500">$500</div>
+                <div class="col-md-2 question" id="category-6-500">$500</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card text-white mb-3" style="max-width: 18rem;" id="score">
+                    <div class="card-header">
+                        <div id="mula">$</div>
+                        <div id="contScore">0</div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" id="contName"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-white mb-3" style="max-width: 18rem;" id="scoreBot1">
+                    <div class="card-header">
+                        <div id="mula">$</div>
+                        <div id="botScore1">0</div>
+                    </div>
+                    <div class="card-body" id="botBody1">
+                        <p class="card-text" id="botName1">Watson</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card text-white mb-3" style="max-width: 18rem;" id="scoreBot2">
+                    <div class="card-header">
+                        <div id="mula">$</div>
+                        <div id="botScore2">0</div>
+                    </div>
+                    <div class="card-body" id="botBody2">
+                        <p class="card-text" id="botName2">Crick</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="speech"></audio>
+        <audio id="effects"></audio>
+        <!-- <div class="container" id="dynamic">
+            <div id="questionBoard">
+                <p id="currentQuestion"></p>
+                <input type="text" id="answerText">
+                <input type="submit">
+                <audio id="speech"></audio>
+            </div>
+            <div id="firstScreen">
+                <img id="title" src="assets/jeopardy.png" class="img img-fluid"alt="Jeopardy!">
+                <br>
+                <h1>Please enter your name</h1>
+                <br>
+                <input type="text" id="nameBox">
+                <br>
+                <br>
+            </div>
+        </div> -->
+
+        <!-- linking to external javascript file -->
+        <script src="assets/js/logic.js"></script>
+
+</body>
+
+</html>
